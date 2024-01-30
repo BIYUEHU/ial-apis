@@ -71,14 +71,18 @@ class Hitokoto
     private static function get()
     {
         $format = $_REQUEST['format'];
-        // 取数据
-        $row = dbQuery(self::HitokotoGetModel);
+        $id = $_REQUEST['id'];
+        $length = $_REQUEST['length'] ? intval($_REQUEST['length']) : null;
 
+        // 取数据
+        $rowCache = $id ? dbQuery("SELECT * FROM ial_hitokoto WHERE id = '{$id}'") : null;
+/*        $rowCache = !$rowCache && $length ? dbQuery("SELECT * FROM ial_hitokoto WHERE CHAR_LENGTH(msg) <= $length ORDER BY RAND() limit 1") : $rowCache;*/
+        $row = $rowCache ? $rowCache : dbQuery(self::HitokotoGetModel);
 
         switch ($format) {
             case 'text':
                 header('content-type:text/plain');
-                $result = $row['msg'] . (empty($row['_from']) ? '' : '——' . $row['_from']);
+                $result = $row['msg'] . (trim($row['_from']) ? '——' . $row['_from'] : '');
                 echo $result;
                 return false;
             default:
@@ -90,9 +94,11 @@ class Hitokoto
                 );
 
                 $data = array(
+                    'id' => intval($row['id']),
                     'msg' => $row['msg'],
-                    'from' => $row['_from'],
-                    'type' => $typeList[intval($row['type'])]
+                    'from' => trim($row['_from']),
+                    'type' => $typeList[intval($row['type'])],
+                    'likes' => intval($row['likes'] ?? 0)
                 );
 
                 return [500, $data];

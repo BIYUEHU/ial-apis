@@ -2,13 +2,14 @@
 
 ## List
 
-- [agent](./agent/) 代理
-- [background](./background/) 随机二刺猿背景图片(自定义)
-- [core](./core/) 核心
-- [getbilianime](./getbilianime/) 获取 Bilibili 用户番剧信息,参考[biyuehu/getbilianime](https://github.com/BIYUEHU/getBiliAnime)
-- [hitokoto](./hitokoto/) HOTARU 随机一言(需数据库)
-- [huimg](./huimg/) HOTARU 随机图片(需数据库)
-- [seimg](./seimg/) Pixiv 随机色图(需数据库)
+- [agent](./src/agent/) 代理
+- [background](./src/background/) 随机二刺猿背景图片(自定义)
+- [core](./src/core/) 核心
+- [getbilianime](./src/getbilianime/) 获取 Bilibili 用户番剧信息,参考 [biyuehu/getbilianime](https://github.com/BIYUEHU/getBiliAnime)
+- [hitokoto](./src/hitokoto/) HOTARU 随机一言(需数据库)
+- [huimg](./src/huimg/) HOTARU 随机图片(需数据库)
+- [qqavatar](./src/qqavatar/) QQ 头像图片代理
+- [seimg](./src/seimg/) Pixiv 随机色图(需数据库)
 
 ## Core Config
 
@@ -16,8 +17,8 @@
 <?php
 return [
     'callLimit' => [
-        'cycle' => 20,
-        'cycleNum' => 6,
+        'cycle' => 2,
+        'cycleNum' => 1,
         'refuseMsg' => 'Bad request'
     ],
     'database' => [

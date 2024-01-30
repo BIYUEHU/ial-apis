@@ -1,0 +1,18 @@
+{
+    "name": "hotaru/ial-apis",
+    "description": "apis system base on php",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hotaru\\IalApis\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hotaru",
+            "email": "biyuehuya@gmail.com"
+        }
+    ],
+    "require": {}
+}
